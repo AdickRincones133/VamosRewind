@@ -1,0 +1,95 @@
+﻿Build1=Default,b4a.example
+File1=Background.bal
+File10=slide-1-4.png
+File11=slide2.bal
+File12=slide-2-1.png
+File13=slide3.bal
+File14=slide-3-1.png
+File15=slide4.bal
+File16=slide-4-1.png
+File17=slide5.bal
+File18=slide-5-1.png
+File19=template-1.jpg
+File2=cloud.png
+File20=template-2.jpg
+File21=template-3.jpg
+File22=template-4.jpg
+File23=template-5.jpg
+File3=cloud-2.png
+File4=lightning-1.png
+File5=lightning-2.png
+File6=slide1.bal
+File7=slide-1-1.png
+File8=slide-1-2.png
+File9=slide-1-3.png
+FileGroup1=Background
+FileGroup10=Imagenes
+FileGroup11=Sliders
+FileGroup12=Imagenes
+FileGroup13=Sliders
+FileGroup14=Imagenes
+FileGroup15=Sliders
+FileGroup16=Imagenes
+FileGroup17=Sliders
+FileGroup18=Imagenes
+FileGroup19=Imagenes
+FileGroup2=Imagenes
+FileGroup20=Imagenes
+FileGroup21=Imagenes
+FileGroup22=Imagenes
+FileGroup23=Imagenes
+FileGroup3=Imagenes
+FileGroup4=Imagenes
+FileGroup5=Imagenes
+FileGroup6=Sliders
+FileGroup7=Imagenes
+FileGroup8=Imagenes
+FileGroup9=Imagenes
+Group=Default Group
+Library1=core
+Library2=javaobject
+Library3=phone
+Library4=xui
+Library5=accessibility
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Rewind
+Module2=Starter
+NumberOfFiles=23
+NumberOfLibraries=5
+NumberOfModules=2
+Version=13
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	
+End Sub
+
+Sub Globals
+	
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+
+End Sub
+
+Sub Activity_Resume
+	StartActivity(Rewind)
+	Activity.Finish
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
