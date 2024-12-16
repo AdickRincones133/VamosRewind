@@ -25,8 +25,15 @@ Sub Globals
 	Dim panels As List 
 	Dim startX As Float 
 	Dim originalX As Float
+	Dim canMove As Boolean = False
 	
 	Private slide_1 As ImageView 'IMAGEN PRINCIPAL'
+	Private slide_2 As ImageView
+	Private slide_3 As ImageView
+	Private slide_4 As ImageView
+	Private slide_5 As ImageView
+	Private slide_6 As ImageView
+	Private slide_7 As ImageView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -50,10 +57,29 @@ Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
+
+Sub JobDone(Respuesta As String, job As HttpJob) As ResumableSub
+	Try
+		If job.Success Then
+			Select job.JobName
+				
+					
+			End Select
+		End If
+	Catch
+		Log(LastException.Message)
+	End Try
+	Return Null
+End Sub
+
 '------------------------ CAROUSEL LOGIC ------------------------'
 
 Sub changeScreen(screen As Int)
 	If screen < 0 Or screen > 4 Then
+		Return
+	End If
+	
+	If currentPanelIndex = 4 And screen = 4 Then
 		Return
 	End If
 	
@@ -62,30 +88,51 @@ Sub changeScreen(screen As Int)
 	Select screen
 		Case 0
 			pnlContent.LoadLayout("slide1.bal")
+			canMove = True
 			AnimateSlideIn(slide_1)
+			AnimateSlideInFromRight(slide_3)
+			AnimateSlideInFromLeft(slide_2)
+			AnimateSlideInFromTop(slide_4)
+			Sleep(800)
+			AnimateUpDown(slide_4)
+			Sleep(800)
+			AnimateUpDown(slide_2)
+			AnimateUpDown(slide_3)
 		
 		Case 1
 			pnlContent.LoadLayout("slide2.bal")
 			AnimateSlideIn(slide_1)
+			AnimateSlideInFromLeft(slide_2)
+			AnimateSlideInFromRight(slide_3)
+			Sleep(800)
+			AnimateLeftToRight(slide_2)
+			AnimateRightToLeft(slide_3)
 		
 		Case 2
 			pnlContent.LoadLayout("slide3.bal")
 			AnimateSlideIn(slide_1)
+			AnimateSlideInFromRight(slide_2)
+			AnimateSlideInFromRight(slide_3)
+			AnimateSlideInFromRight(slide_4)
+			AnimateSlideInFromRight(slide_5)
+			AnimateSlideInFromRight(slide_6)
+			AnimateSlideInFromRight(slide_7)
 			
 		Case 3
 			pnlContent.LoadLayout("slide4.bal")
 			AnimateSlideIn(slide_1)
+			AnimateSlideInFromRight(slide_3)
+			AnimateSlideInFromLeft(slide_2)
 			
 		Case 4
 			pnlContent.LoadLayout("slide5.bal")
 			AnimateSlideIn(slide_1)
+			AnimateSlideInFromLeft(slide_3)
+			AnimateSlideInFromLeft(slide_2)
+			AnimateSlideInFromRight(slide_4)
+			AnimateSlideInFromRight(slide_5)
 			
 	End Select
-End Sub
-
-Sub AnimateSlideIn(view As View)	
-	view.Top = Activity.Height + view.Height
-	view.SetLayoutAnimated(800, view.Left, Activity.Height - view.Height, view.Width, view.Height)
 End Sub
 
 Sub CreateStatusIndicators(act As Activity)
@@ -142,8 +189,8 @@ Sub FillTimer_Tick
 	progress = progress + 5dip 
 
 	If progress >= panelWidth Then
+		changeScreen(Min(currentPanelIndex + 1, panels.Size - 1))
 		currentPanelIndex = Min(currentPanelIndex + 1, panels.Size - 1)
-		changeScreen(currentPanelIndex)
 		progress = 0
 	End If
 End Sub
@@ -179,8 +226,8 @@ Sub pnlContent_Touch(Action As Int, X As Float, Y As Float)
 	End Select
 End Sub
 
-
 Sub FillCurrentBarAndAdvance
+	canMove = False
 	changeScreen(currentPanelIndex + 1)
 	
 	If currentPanelIndex >= panels.Size Then Return
@@ -197,6 +244,7 @@ Sub FillCurrentBarAndAdvance
 End Sub
 
 Sub ResetCurrentBarAndGoBack
+	canMove = False
 	changeScreen(currentPanelIndex - 1)
 	
 	If currentPanelIndex <= 0 Then Return 
@@ -217,3 +265,54 @@ Sub ResetCurrentBarAndGoBack
 
 	progress = 0
 End Sub
+
+'----------------------------------------------------------------'
+
+'------------------------ ANIMATIONS ------------------------'
+
+Sub AnimateSlideIn(view As View)
+	view.Top = Activity.Height + view.Height
+	view.SetLayoutAnimated(800, view.Left, Activity.Height - view.Height, view.Width, view.Height)
+End Sub
+
+Sub AnimateSlideInFromTop(view As View)
+	Dim originViewY As Float
+	originViewY = view.Top
+	view.Top = -view.Height
+	view.SetLayoutAnimated(800, view.Left, originViewY, view.Width, view.Height)
+End Sub
+
+Sub AnimateSlideInFromRight(view As View)
+	Dim originViewX As Float
+	originViewX = view.Left
+	view.Left = Activity.Width
+	view.SetLayoutAnimated(800, originViewX, view.Top, view.Width, view.Height)
+End Sub
+
+Sub AnimateSlideInFromLeft(view As View)
+	Dim originViewX As Float
+	originViewX = view.Left
+	view.Left = -view.Width
+	view.SetLayoutAnimated(800, originViewX, view.Top, view.Width, view.Height)
+End Sub
+
+Sub AnimateUpDown(view As View)
+	Dim originViewY As Float
+	originViewY = view.Top
+	Do While canMove = True
+		view.SetLayoutAnimated(3000, view.Left, originViewY - 20dip, view.Width, view.Height)
+		Sleep(3000)
+		view.SetLayoutAnimated(3000, view.Left, originViewY + 20dip, view.Width, view.Height)
+		Sleep(3000)
+	Loop
+End Sub
+
+Sub AnimateLeftToRight(view As View)
+	view.SetLayoutAnimated(30000, Activity.Width + view.Width, view.Top, view.Width, view.Height)
+End Sub
+
+Sub AnimateRightToLeft(view As View)
+	view.SetLayoutAnimated(30000, -view.Width, view.Top, view.Width, view.Height)
+End Sub
+
+'------------------------------------------------------------'

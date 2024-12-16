@@ -10,30 +10,86 @@ Version=9.9
 #End Region
 
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
-
+	Public IP_Conexion As String = "149.71.98.251"
 End Sub
 
 Sub Service_Create
-	'This is the program entry point.
-	'This is a good place to load resources that are not specific to a single activity.
 
 End Sub
 
 Sub Service_Start (StartingIntent As Intent)
-	Service.StopAutomaticForeground 'Starter service can start in the foreground state in some edge cases.
+	Service.StopAutomaticForeground 
 End Sub
 
 Sub Service_TaskRemoved
-	'This event will be raised when the user removes the app from the recent apps list.
 End Sub
 
-'Return true to allow the OS default exceptions handler to handle the uncaught exception.
 Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
 	Return True
 End Sub
 
 Sub Service_Destroy
 
+End Sub
+
+Public Sub POST_Query(Query As String, JobName As String) As ResumableSub
+	Try
+		Dim res As String
+		Dim job As HttpJob
+		job.Initialize(JobName, Me)
+		job.PostString($"http://${IP_Conexion}/spa/insetar_cliente.php"$, "query=" & Query) 
+
+		Wait For (job) JobDone(job As HttpJob)
+		If job.success Then
+			res = job.GetString2("Windows-1252")
+			Dim actividad() = Regex.Split(",", JobName) As Object
+			If Not(IsPaused(actividad(1))) Then
+				CallSub3(actividad(1), "JobDone", res, job)
+			End If
+		End If
+	Catch
+		Log(LastException.Message)
+	End Try
+	Return Null
+End Sub
+
+
+Sub GET_Query(Query As String, JobName As String) As ResumableSub
+	Try
+		Dim res As String
+		Dim job As HttpJob
+		job.Initialize(JobName, Me)
+		job.PostString("http://"&IP_Conexion&"/spa/selects.php", "query=" & Query)
+		Wait For (job) jobDone(job As HttpJob)
+		If job.success Then
+			res = job.GetString2("Windows-1252")
+			Dim actividad() = Regex.Split(",", JobName) As Object
+			If Not(IsPaused(actividad(1))) Then
+				CallSub3(actividad(1), "JobDone", res, job)
+			End If
+		End If
+	Catch
+		Log(LastException.Message)
+	End Try
+	Return Null
+End Sub
+
+Sub UPDATE_Query(Query As String, JobName As String) As ResumableSub
+	Try
+		Dim res As String
+		Dim job As HttpJob
+		job.Initialize(JobName, Me)
+		job.PostString("http://"&IP_Conexion&"/spa/update.php", "query=" & Query)
+		Wait For (job) jobDone(job As HttpJob)
+		If job.success Then
+			res = job.GetString2("Windows-1252")
+			Dim actividad() = Regex.Split(",", JobName) As Object
+			If Not(IsPaused(actividad(1))) Then
+				CallSub3(actividad(1), "JobDone", res, job)
+			End If
+		End If
+	Catch
+		Log(LastException.Message)
+	End Try
+	Return Null
 End Sub
