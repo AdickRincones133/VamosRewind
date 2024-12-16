@@ -1,39 +1,43 @@
 --release
 --output
-D:\Downloads\VamosRewind\Objects
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects
 --lib
-C:\Android\platforms\android-34\android.jar
+C:\android\platforms\android-33\android.jar
 --min-api
 21
-C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63860284176000\dex_v1\b4ashared.zip
+C:\android\tools\..\extras\b4a_local\unpacked-b4ashared-63860276976000\dex_v1\b4ashared.zip
+C:\android\tools\..\extras\b4a_local\unpacked-debug-63860276976000\dex_v1\debug.zip
 c:\android\tools\..\extras\b4a_remote\androidx\multidex\multidex\2.0.1\unpacked-multidex-2.0.1\jars\classes.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-core-63860284176000\dex_v1\core.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-javaobject-63860284176000\dex_v1\javaobject.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-phone-63860284176000\dex_v1\phone.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-xui-63860284176000\dex_v1\xui.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-accessibility-63860284176000\dex_v1\accessibility.zip
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main$1.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main$B4AMenuItemsClickListener.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main$HandleKeyDelayed.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main$ResumeMessage.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main$WaitForLayout.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\main.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\R$drawable.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\R$style.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\R.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind$1.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind$B4AMenuItemsClickListener.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind$HandleKeyDelayed.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind$ResumeMessage.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind$WaitForLayout.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\rewind.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\starter$1.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\starter$2.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\starter$starter_BR.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\starter.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_background.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide1.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide2.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide3.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide4.dex
-D:\Downloads\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide5.dex
+C:\android\tools\..\extras\b4a_local\unpacked-core-63860276976000\dex_v1\core.zip
+C:\android\tools\..\extras\b4a_local\unpacked-javaobject-63860276976000\dex_v1\javaobject.zip
+C:\android\tools\..\extras\b4a_local\unpacked-phone-63860276976000\dex_v1\phone.zip
+C:\android\tools\..\extras\b4a_local\unpacked-xui-63860276976000\dex_v1\xui.zip
+C:\android\tools\..\extras\b4a_local\unpacked-accessibility-63860276976000\dex_v1\accessibility.zip
+C:\android\tools\..\extras\b4a_local\unpacked-remotelogger-63860276976000\dex_v1\remotelogger.zip
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main$1.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main$B4AMenuItemsClickListener.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main$HandleKeyDelayed.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main$ResumeMessage.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main$WaitForLayout.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\main.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\m_funciones.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\R$drawable.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\R$style.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\R.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$1.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$B4AMenuItemsClickListener.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$HandleKeyDelayed.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$ResumableSub_Activity_Create.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$ResumeMessage.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind$WaitForLayout.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\rewind.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\starter$1.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\starter$2.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\starter$starter_BR.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\starter.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_background.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide1.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide2.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide3.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide4.dex
+D:\Usuarios\Gabriel\Documentos\Archivos de gabriel\B4A Projects\VamosRewind\Objects\dexed\b4a\example\designerscripts\LS_slide5.dex

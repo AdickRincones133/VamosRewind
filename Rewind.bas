@@ -11,8 +11,7 @@ Version=13
 
 Sub Process_Globals
 	Private xui As XUI
-	Private access As Accessiblity
-
+	Private tmr As Timer
 End Sub
 
 Sub Globals
@@ -24,7 +23,6 @@ Sub Globals
 	Dim currentPanelIndex As Int = 0
 	Dim progress As Int 
 	Dim panels As List 
-	Dim tmr As Timer 
 	Dim startX As Float 
 	Dim originalX As Float
 	
@@ -32,15 +30,16 @@ Sub Globals
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	FullscreenActivity(Activity)
+	m_Funciones.FullscreenActivity(Activity)
+	Sleep(1)
 	Activity.LoadLayout("Background.bal")
 	
-	pnlBackground.Height = Activity.Height + GetStatusBarHeight + GetNavigationBarHeight
+	pnlBackground.Height = Activity.Height + m_Funciones.GetStatusBarHeight + m_Funciones.GetNavigationBarHeight
 	pnlContent.Height = pnlBackground.Height
 
 	changeScreen(currentPanelIndex)
 	CreateStatusIndicators(Activity)
-	AutoEscalar(Activity)
+	m_Funciones.AutoEscalar(Activity)
 End Sub
 
 Sub Activity_Resume
@@ -98,7 +97,7 @@ Sub CreateStatusIndicators(act As Activity)
 	Dim container As Panel
 	container.Initialize("")
 	container.Color = Colors.Transparent
-	act.AddView(container, leftMargin, GetStatusBarHeight + 30dip, act.Width - 2 * leftMargin, panelHeight)
+	act.AddView(container, leftMargin, m_Funciones.GetStatusBarHeight + 30dip, act.Width - 2 * leftMargin, panelHeight)
 
 	Dim containerWidth As Int = act.Width - 2 * leftMargin
 	Dim totalSpace As Int = (numPanels - 1) * spaceBetweenPanels
@@ -218,61 +217,3 @@ Sub ResetCurrentBarAndGoBack
 
 	progress = 0
 End Sub
-
-'----------------------------------------------------------------'
-
-'------------------------ FULL SCREEN CONFIGURATION ------------------------'
-
-Sub FullscreenActivity (act As Activity)
-	Dim p As Phone
-	Dim bodyHeight As Int = GetStatusBarHeight + GetNavigationBarHeight
-	If p.SdkVersion >= 4.4 Then
-		Dim jo As JavaObject
-		Dim window As JavaObject = jo.InitializeContext.RunMethod("getWindow", Null)
-		window.RunMethod("addFlags", Array(Bit.Or(0x00000200, 0x08000000)))
-		act.Height = act.Height + bodyHeight
-	End If
-End Sub
-
-Sub GetStatusBarHeight As Int
-	Dim context As JavaObject
-	context.InitializeContext
-	Dim res As JavaObject = context.RunMethod("getResources", Null)
-	Dim resourceId As Int = res.RunMethod("getIdentifier", Array("status_bar_height", "dimen", "android"))
-	If resourceId > 0 Then
-		Return res.RunMethod("getDimensionPixelSize", Array(resourceId))
-	Else
-		Return 0
-	End If
-End Sub
-
-Sub GetNavigationBarHeight As Int
-	Dim context As JavaObject
-	context.InitializeContext
-	Dim res As JavaObject = context.RunMethod("getResources", Null)
-	Dim resourceId As Int = res.RunMethod("getIdentifier", Array("navigation_bar_height", "dimen", "android"))
-	If resourceId > 0 Then
-		Return res.RunMethod("getDimensionPixelSize", Array(resourceId))
-	Else
-		Return 0
-	End If
-End Sub
-Public Sub AutoEscalar(Pantalla As Activity)
-	Dim fscale As Double
-	
-	fscale = access.GetUserFontScale
-	If fscale > 1 Then
-		For Each v As View In Pantalla.GetAllViewsRecursive
-			If v Is Label Then
-				Dim lbl As Label = v
-				lbl.TextSize = NumberFormat2((lbl.TextSize / fscale) - 2,1,0,0,False)
-				Log((lbl.TextSize / fscale) - 1)
-			Else If v Is Button Then
-				Dim s As Button = v
-				s.TextSize = NumberFormat2(s.TextSize / fscale,1,0,0,False)
-			End If
-		Next
-	End If
-End Sub
-
-'---------------------------------------------------------------------------'

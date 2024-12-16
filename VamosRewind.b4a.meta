@@ -1,12 +1,15 @@
 ﻿ModuleBookmarks0=
 ModuleBookmarks1=
 ModuleBookmarks2=
+ModuleBookmarks3=
 ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleBreakpoints2=
+ModuleBreakpoints3=
 ModuleClosedNodes0=1,2
 ModuleClosedNodes1=
-ModuleClosedNodes2=1
-NavigationStack=Diseñador Visual,slide2.bal,-100,1,Diseñador Visual,slide3.bal,-100,2,Diseñador Visual,slide4.bal,-100,1,Rewind,FillTimer_Tick,124,4,Rewind,Globals,24,6,Rewind,Activity_Create,34,0,Rewind,changeScreen,65,6,Diseñador Visual,slide1.bal,-100,4,Rewind,AnimateSlideIn,80,6,Rewind,CreateStatusIndicators,105,0
+ModuleClosedNodes2=
+ModuleClosedNodes3=1
+NavigationStack=Rewind,Process_Globals,8,0,Rewind,Globals,10,0,m_Funciones,Process_Globals,5,0,m_Funciones,GetNavigationBarHeight,43,0,m_Funciones,GetStatusBarHeight,21,0,m_Funciones,GetDimension,41,0,m_Funciones,AdjustTextSize,62,0,m_Funciones,AutoEscalar,53,0,m_Funciones,FullscreenActivity,8,0,Rewind,ResetCurrentBarAndGoBack,213,0
 SelectedBuild=0
 VisibleModules=2,1

@@ -17,12 +17,12 @@ views.get("pnlbackground").vw.setWidth((int)((100d / 100 * width) - (0d)));
 //BA.debugLineNum = 5;BA.debugLine="pnlBackground.SetTopAndBottom(0, 100%y)"[Background/General script]
 views.get("pnlbackground").vw.setTop((int)(0d));
 views.get("pnlbackground").vw.setHeight((int)((100d / 100 * height) - (0d)));
-//BA.debugLineNum = 7;BA.debugLine="pnlContent.SetLeftAndRight(pnlBackground.Left, pnlBackground.Right)"[Background/General script]
-views.get("pnlcontent").vw.setLeft((int)((views.get("pnlbackground").vw.getLeft())));
-views.get("pnlcontent").vw.setWidth((int)((views.get("pnlbackground").vw.getLeft() + views.get("pnlbackground").vw.getWidth()) - ((views.get("pnlbackground").vw.getLeft()))));
-//BA.debugLineNum = 8;BA.debugLine="pnlContent.SetTopAndBottom(pnlBackground.Top, pnlBackground.Bottom)"[Background/General script]
-views.get("pnlcontent").vw.setTop((int)((views.get("pnlbackground").vw.getTop())));
-views.get("pnlcontent").vw.setHeight((int)((views.get("pnlbackground").vw.getTop() + views.get("pnlbackground").vw.getHeight()) - ((views.get("pnlbackground").vw.getTop()))));
+//BA.debugLineNum = 7;BA.debugLine="pnlContent.SetLeftAndRight(0, pnlBackground.Width)"[Background/General script]
+views.get("pnlcontent").vw.setLeft((int)(0d));
+views.get("pnlcontent").vw.setWidth((int)((views.get("pnlbackground").vw.getWidth()) - (0d)));
+//BA.debugLineNum = 8;BA.debugLine="pnlContent.SetTopAndBottom(0, pnlBackground.Height)"[Background/General script]
+views.get("pnlcontent").vw.setTop((int)(0d));
+views.get("pnlcontent").vw.setHeight((int)((views.get("pnlbackground").vw.getHeight()) - (0d)));
 
 }
 }

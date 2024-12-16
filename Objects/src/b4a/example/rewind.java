@@ -34,7 +34,7 @@ public class rewind extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.rewind");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.rewind");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -335,20 +335,7 @@ public class rewind extends Activity implements B4AActivity{
             
     }
 
-public anywheresoftware.b4a.keywords.Common __c = null;
-public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
-public static anywheresoftware.b4a.objects.Accessibility.Accessibility2 _access = null;
-public anywheresoftware.b4a.objects.PanelWrapper _pnlbackground = null;
-public anywheresoftware.b4a.objects.PanelWrapper _pnlcontent = null;
-public static int _currentpanelindex = 0;
-public static int _progress = 0;
-public anywheresoftware.b4a.objects.collections.List _panels = null;
-public anywheresoftware.b4a.objects.Timer _tmr = null;
-public static float _startx = 0f;
-public static float _originalx = 0f;
-public anywheresoftware.b4a.objects.ImageViewWrapper _slide_1 = null;
-public b4a.example.main _main = null;
-public b4a.example.starter _starter = null;
+
 
 public static void initializeProcessGlobals() {
              try {
@@ -357,134 +344,154 @@ public static void initializeProcessGlobals() {
                 throw new RuntimeException(e);
             }
 }
-public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 28;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 29;BA.debugLine="FullscreenActivity(Activity)";
-_fullscreenactivity(mostCurrent._activity);
- //BA.debugLineNum = 30;BA.debugLine="Activity.LoadLayout(\"Background.bal\")";
-mostCurrent._activity.LoadLayout("Background.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 32;BA.debugLine="pnlBackground.Height = Activity.Height + GetStatu";
-mostCurrent._pnlbackground.setHeight((int) (mostCurrent._activity.getHeight()+_getstatusbarheight()+_getnavigationbarheight()));
- //BA.debugLineNum = 33;BA.debugLine="pnlContent.Height = pnlBackground.Height";
-mostCurrent._pnlcontent.setHeight(mostCurrent._pnlbackground.getHeight());
- //BA.debugLineNum = 35;BA.debugLine="changeScreen(currentPanelIndex)";
-_changescreen(_currentpanelindex);
- //BA.debugLineNum = 36;BA.debugLine="CreateStatusIndicators(Activity)";
-_createstatusindicators(mostCurrent._activity);
- //BA.debugLineNum = 37;BA.debugLine="AutoEscalar(Activity)";
-_autoescalar(mostCurrent._activity);
- //BA.debugLineNum = 38;BA.debugLine="End Sub";
-return "";
+public anywheresoftware.b4a.keywords.Common __c = null;
+public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
+public static anywheresoftware.b4a.objects.Timer _tmr = null;
+public anywheresoftware.b4a.objects.PanelWrapper _pnlbackground = null;
+public anywheresoftware.b4a.objects.PanelWrapper _pnlcontent = null;
+public static int _currentpanelindex = 0;
+public static int _progress = 0;
+public anywheresoftware.b4a.objects.collections.List _panels = null;
+public static float _startx = 0f;
+public static float _originalx = 0f;
+public anywheresoftware.b4a.objects.ImageViewWrapper _slide_1 = null;
+public b4a.example.main _main = null;
+public b4a.example.starter _starter = null;
+public b4a.example.m_funciones _m_funciones = null;
+public static void  _activity_create(boolean _firsttime) throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}); return;}
+ResumableSub_Activity_Create rsub = new ResumableSub_Activity_Create(null,_firsttime);
+rsub.resume(processBA, null);
 }
-public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 44;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 46;BA.debugLine="End Sub";
-return "";
+public static class ResumableSub_Activity_Create extends BA.ResumableSub {
+public ResumableSub_Activity_Create(b4a.example.rewind parent,boolean _firsttime) {
+this.parent = parent;
+this._firsttime = _firsttime;
 }
-public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 40;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 42;BA.debugLine="End Sub";
-return "";
-}
-public static String  _animateslidein(anywheresoftware.b4a.objects.ConcreteViewWrapper _view) throws Exception{
- //BA.debugLineNum = 81;BA.debugLine="Sub AnimateSlideIn(view As View)";
- //BA.debugLineNum = 82;BA.debugLine="view.Top = Activity.Height + view.Height";
-_view.setTop((int) (mostCurrent._activity.getHeight()+_view.getHeight()));
- //BA.debugLineNum = 83;BA.debugLine="view.SetLayoutAnimated(800, view.Left, Activity.H";
-_view.SetLayoutAnimated((int) (800),_view.getLeft(),(int) (mostCurrent._activity.getHeight()-_view.getHeight()),_view.getWidth(),_view.getHeight());
- //BA.debugLineNum = 84;BA.debugLine="End Sub";
-return "";
-}
-public static String  _autoescalar(anywheresoftware.b4a.objects.ActivityWrapper _pantalla) throws Exception{
-double _fscale = 0;
-anywheresoftware.b4a.objects.ConcreteViewWrapper _v = null;
-anywheresoftware.b4a.objects.LabelWrapper _lbl = null;
-anywheresoftware.b4a.objects.ButtonWrapper _s = null;
- //BA.debugLineNum = 254;BA.debugLine="Public Sub AutoEscalar(Pantalla As Activity)";
- //BA.debugLineNum = 255;BA.debugLine="Dim fscale As Double";
-_fscale = 0;
- //BA.debugLineNum = 257;BA.debugLine="fscale = access.GetUserFontScale";
-_fscale = _access.GetUserFontScale();
- //BA.debugLineNum = 258;BA.debugLine="If fscale > 1 Then";
-if (_fscale>1) { 
- //BA.debugLineNum = 259;BA.debugLine="For Each v As View In Pantalla.GetAllViewsRecurs";
-_v = new anywheresoftware.b4a.objects.ConcreteViewWrapper();
-{
-final anywheresoftware.b4a.BA.IterableList group4 = _pantalla.GetAllViewsRecursive();
-final int groupLen4 = group4.getSize()
-;int index4 = 0;
+b4a.example.rewind parent;
+boolean _firsttime;
+
+@Override
+public void resume(BA ba, Object[] result) throws Exception{
+RDebugUtils.currentModule="rewind";
+
+    while (true) {
+        switch (state) {
+            case -1:
+return;
+
+case 0:
+//C
+this.state = -1;
+RDebugUtils.currentLine=851969;
+ //BA.debugLineNum = 851969;BA.debugLine="m_Funciones.FullscreenActivity(Activity)";
+parent.mostCurrent._m_funciones._fullscreenactivity /*String*/ (mostCurrent.activityBA,parent.mostCurrent._activity);
+RDebugUtils.currentLine=851970;
+ //BA.debugLineNum = 851970;BA.debugLine="Sleep(1)";
+anywheresoftware.b4a.keywords.Common.Sleep(mostCurrent.activityBA,new anywheresoftware.b4a.shell.DebugResumableSub.DelegatableResumableSub(this, "rewind", "activity_create"),(int) (1));
+this.state = 1;
+return;
+case 1:
+//C
+this.state = -1;
 ;
-for (; index4 < groupLen4;index4++){
-_v = (anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(group4.Get(index4)));
- //BA.debugLineNum = 260;BA.debugLine="If v Is Label Then";
-if (_v.getObjectOrNull() instanceof android.widget.TextView) { 
- //BA.debugLineNum = 261;BA.debugLine="Dim lbl As Label = v";
-_lbl = new anywheresoftware.b4a.objects.LabelWrapper();
-_lbl = (anywheresoftware.b4a.objects.LabelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.LabelWrapper(), (android.widget.TextView)(_v.getObject()));
- //BA.debugLineNum = 262;BA.debugLine="lbl.TextSize = NumberFormat2((lbl.TextSize / f";
-_lbl.setTextSize((float)(Double.parseDouble(anywheresoftware.b4a.keywords.Common.NumberFormat2((_lbl.getTextSize()/(double)_fscale)-2,(int) (1),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.False))));
- //BA.debugLineNum = 263;BA.debugLine="Log((lbl.TextSize / fscale) - 1)";
-anywheresoftware.b4a.keywords.Common.LogImpl("31310729",BA.NumberToString((_lbl.getTextSize()/(double)_fscale)-1),0);
- }else if(_v.getObjectOrNull() instanceof android.widget.Button) { 
- //BA.debugLineNum = 265;BA.debugLine="Dim s As Button = v";
-_s = new anywheresoftware.b4a.objects.ButtonWrapper();
-_s = (anywheresoftware.b4a.objects.ButtonWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ButtonWrapper(), (android.widget.Button)(_v.getObject()));
- //BA.debugLineNum = 266;BA.debugLine="s.TextSize = NumberFormat2(s.TextSize / fscale";
-_s.setTextSize((float)(Double.parseDouble(anywheresoftware.b4a.keywords.Common.NumberFormat2(_s.getTextSize()/(double)_fscale,(int) (1),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.False))));
- };
- }
-};
- };
- //BA.debugLineNum = 270;BA.debugLine="End Sub";
-return "";
+RDebugUtils.currentLine=851971;
+ //BA.debugLineNum = 851971;BA.debugLine="Activity.LoadLayout(\"Background.bal\")";
+parent.mostCurrent._activity.LoadLayout("Background.bal",mostCurrent.activityBA);
+RDebugUtils.currentLine=851973;
+ //BA.debugLineNum = 851973;BA.debugLine="pnlBackground.Height = Activity.Height + m_Funcio";
+parent.mostCurrent._pnlbackground.setHeight((int) (parent.mostCurrent._activity.getHeight()+parent.mostCurrent._m_funciones._getstatusbarheight /*int*/ (mostCurrent.activityBA)+parent.mostCurrent._m_funciones._getnavigationbarheight /*int*/ (mostCurrent.activityBA)));
+RDebugUtils.currentLine=851974;
+ //BA.debugLineNum = 851974;BA.debugLine="pnlContent.Height = pnlBackground.Height";
+parent.mostCurrent._pnlcontent.setHeight(parent.mostCurrent._pnlbackground.getHeight());
+RDebugUtils.currentLine=851976;
+ //BA.debugLineNum = 851976;BA.debugLine="changeScreen(currentPanelIndex)";
+_changescreen(parent._currentpanelindex);
+RDebugUtils.currentLine=851977;
+ //BA.debugLineNum = 851977;BA.debugLine="CreateStatusIndicators(Activity)";
+_createstatusindicators(parent.mostCurrent._activity);
+RDebugUtils.currentLine=851978;
+ //BA.debugLineNum = 851978;BA.debugLine="m_Funciones.AutoEscalar(Activity)";
+parent.mostCurrent._m_funciones._autoescalar /*String*/ (mostCurrent.activityBA,parent.mostCurrent._activity);
+RDebugUtils.currentLine=851979;
+ //BA.debugLineNum = 851979;BA.debugLine="End Sub";
+if (true) break;
+
+            }
+        }
+    }
 }
 public static String  _changescreen(int _screen) throws Exception{
- //BA.debugLineNum = 50;BA.debugLine="Sub changeScreen(screen As Int)";
- //BA.debugLineNum = 51;BA.debugLine="If screen < 0 Or screen > 4 Then";
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "changescreen", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "changescreen", new Object[] {_screen}));}
+RDebugUtils.currentLine=1048576;
+ //BA.debugLineNum = 1048576;BA.debugLine="Sub changeScreen(screen As Int)";
+RDebugUtils.currentLine=1048577;
+ //BA.debugLineNum = 1048577;BA.debugLine="If screen < 0 Or screen > 4 Then";
 if (_screen<0 || _screen>4) { 
- //BA.debugLineNum = 52;BA.debugLine="Return";
+RDebugUtils.currentLine=1048578;
+ //BA.debugLineNum = 1048578;BA.debugLine="Return";
 if (true) return "";
  };
- //BA.debugLineNum = 55;BA.debugLine="pnlContent.RemoveAllViews";
+RDebugUtils.currentLine=1048581;
+ //BA.debugLineNum = 1048581;BA.debugLine="pnlContent.RemoveAllViews";
 mostCurrent._pnlcontent.RemoveAllViews();
- //BA.debugLineNum = 57;BA.debugLine="Select screen";
+RDebugUtils.currentLine=1048583;
+ //BA.debugLineNum = 1048583;BA.debugLine="Select screen";
 switch (_screen) {
 case 0: {
- //BA.debugLineNum = 59;BA.debugLine="pnlContent.LoadLayout(\"slide1.bal\")";
+RDebugUtils.currentLine=1048585;
+ //BA.debugLineNum = 1048585;BA.debugLine="pnlContent.LoadLayout(\"slide1.bal\")";
 mostCurrent._pnlcontent.LoadLayout("slide1.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 60;BA.debugLine="AnimateSlideIn(slide_1)";
+RDebugUtils.currentLine=1048586;
+ //BA.debugLineNum = 1048586;BA.debugLine="AnimateSlideIn(slide_1)";
 _animateslidein((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._slide_1.getObject())));
  break; }
 case 1: {
- //BA.debugLineNum = 63;BA.debugLine="pnlContent.LoadLayout(\"slide2.bal\")";
+RDebugUtils.currentLine=1048589;
+ //BA.debugLineNum = 1048589;BA.debugLine="pnlContent.LoadLayout(\"slide2.bal\")";
 mostCurrent._pnlcontent.LoadLayout("slide2.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 64;BA.debugLine="AnimateSlideIn(slide_1)";
+RDebugUtils.currentLine=1048590;
+ //BA.debugLineNum = 1048590;BA.debugLine="AnimateSlideIn(slide_1)";
 _animateslidein((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._slide_1.getObject())));
  break; }
 case 2: {
- //BA.debugLineNum = 67;BA.debugLine="pnlContent.LoadLayout(\"slide3.bal\")";
+RDebugUtils.currentLine=1048593;
+ //BA.debugLineNum = 1048593;BA.debugLine="pnlContent.LoadLayout(\"slide3.bal\")";
 mostCurrent._pnlcontent.LoadLayout("slide3.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 68;BA.debugLine="AnimateSlideIn(slide_1)";
+RDebugUtils.currentLine=1048594;
+ //BA.debugLineNum = 1048594;BA.debugLine="AnimateSlideIn(slide_1)";
 _animateslidein((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._slide_1.getObject())));
  break; }
 case 3: {
- //BA.debugLineNum = 71;BA.debugLine="pnlContent.LoadLayout(\"slide4.bal\")";
+RDebugUtils.currentLine=1048597;
+ //BA.debugLineNum = 1048597;BA.debugLine="pnlContent.LoadLayout(\"slide4.bal\")";
 mostCurrent._pnlcontent.LoadLayout("slide4.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 72;BA.debugLine="AnimateSlideIn(slide_1)";
+RDebugUtils.currentLine=1048598;
+ //BA.debugLineNum = 1048598;BA.debugLine="AnimateSlideIn(slide_1)";
 _animateslidein((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._slide_1.getObject())));
  break; }
 case 4: {
- //BA.debugLineNum = 75;BA.debugLine="pnlContent.LoadLayout(\"slide5.bal\")";
+RDebugUtils.currentLine=1048601;
+ //BA.debugLineNum = 1048601;BA.debugLine="pnlContent.LoadLayout(\"slide5.bal\")";
 mostCurrent._pnlcontent.LoadLayout("slide5.bal",mostCurrent.activityBA);
- //BA.debugLineNum = 76;BA.debugLine="AnimateSlideIn(slide_1)";
+RDebugUtils.currentLine=1048602;
+ //BA.debugLineNum = 1048602;BA.debugLine="AnimateSlideIn(slide_1)";
 _animateslidein((anywheresoftware.b4a.objects.ConcreteViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.ConcreteViewWrapper(), (android.view.View)(mostCurrent._slide_1.getObject())));
  break; }
 }
 ;
- //BA.debugLineNum = 79;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1048605;
+ //BA.debugLineNum = 1048605;BA.debugLine="End Sub";
 return "";
 }
 public static String  _createstatusindicators(anywheresoftware.b4a.objects.ActivityWrapper _act) throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "createstatusindicators", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "createstatusindicators", new Object[] {_act}));}
 int _numpanels = 0;
 int _panelheight = 0;
 int _leftmargin = 0;
@@ -495,333 +502,368 @@ int _totalspace = 0;
 int _panelwidth = 0;
 int _i = 0;
 anywheresoftware.b4a.objects.PanelWrapper _panel = null;
- //BA.debugLineNum = 86;BA.debugLine="Sub CreateStatusIndicators(act As Activity)";
- //BA.debugLineNum = 87;BA.debugLine="Dim numPanels As Int = 5";
+RDebugUtils.currentLine=1179648;
+ //BA.debugLineNum = 1179648;BA.debugLine="Sub CreateStatusIndicators(act As Activity)";
+RDebugUtils.currentLine=1179649;
+ //BA.debugLineNum = 1179649;BA.debugLine="Dim numPanels As Int = 5";
 _numpanels = (int) (5);
- //BA.debugLineNum = 88;BA.debugLine="Dim panelHeight As Int = 5dip";
+RDebugUtils.currentLine=1179650;
+ //BA.debugLineNum = 1179650;BA.debugLine="Dim panelHeight As Int = 5dip";
 _panelheight = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5));
- //BA.debugLineNum = 89;BA.debugLine="Dim leftMargin As Int = 30dip";
+RDebugUtils.currentLine=1179651;
+ //BA.debugLineNum = 1179651;BA.debugLine="Dim leftMargin As Int = 30dip";
 _leftmargin = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30));
- //BA.debugLineNum = 90;BA.debugLine="Dim spaceBetweenPanels As Int = 10dip";
+RDebugUtils.currentLine=1179652;
+ //BA.debugLineNum = 1179652;BA.debugLine="Dim spaceBetweenPanels As Int = 10dip";
 _spacebetweenpanels = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10));
- //BA.debugLineNum = 92;BA.debugLine="Dim container As Panel";
+RDebugUtils.currentLine=1179654;
+ //BA.debugLineNum = 1179654;BA.debugLine="Dim container As Panel";
 _container = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 93;BA.debugLine="container.Initialize(\"\")";
+RDebugUtils.currentLine=1179655;
+ //BA.debugLineNum = 1179655;BA.debugLine="container.Initialize(\"\")";
 _container.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 94;BA.debugLine="container.Color = Colors.Transparent";
+RDebugUtils.currentLine=1179656;
+ //BA.debugLineNum = 1179656;BA.debugLine="container.Color = Colors.Transparent";
 _container.setColor(anywheresoftware.b4a.keywords.Common.Colors.Transparent);
- //BA.debugLineNum = 95;BA.debugLine="act.AddView(container, leftMargin, GetStatusBarHe";
-_act.AddView((android.view.View)(_container.getObject()),_leftmargin,(int) (_getstatusbarheight()+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30))),(int) (_act.getWidth()-2*_leftmargin),_panelheight);
- //BA.debugLineNum = 97;BA.debugLine="Dim containerWidth As Int = act.Width - 2 * leftM";
+RDebugUtils.currentLine=1179657;
+ //BA.debugLineNum = 1179657;BA.debugLine="act.AddView(container, leftMargin, m_Funciones.Ge";
+_act.AddView((android.view.View)(_container.getObject()),_leftmargin,(int) (mostCurrent._m_funciones._getstatusbarheight /*int*/ (mostCurrent.activityBA)+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30))),(int) (_act.getWidth()-2*_leftmargin),_panelheight);
+RDebugUtils.currentLine=1179659;
+ //BA.debugLineNum = 1179659;BA.debugLine="Dim containerWidth As Int = act.Width - 2 * leftM";
 _containerwidth = (int) (_act.getWidth()-2*_leftmargin);
- //BA.debugLineNum = 98;BA.debugLine="Dim totalSpace As Int = (numPanels - 1) * spaceBe";
+RDebugUtils.currentLine=1179660;
+ //BA.debugLineNum = 1179660;BA.debugLine="Dim totalSpace As Int = (numPanels - 1) * spaceBe";
 _totalspace = (int) ((_numpanels-1)*_spacebetweenpanels);
- //BA.debugLineNum = 99;BA.debugLine="Dim panelWidth As Int = (containerWidth - totalSp";
+RDebugUtils.currentLine=1179661;
+ //BA.debugLineNum = 1179661;BA.debugLine="Dim panelWidth As Int = (containerWidth - totalSp";
 _panelwidth = (int) ((_containerwidth-_totalspace)/(double)_numpanels);
- //BA.debugLineNum = 101;BA.debugLine="panels.Initialize";
+RDebugUtils.currentLine=1179663;
+ //BA.debugLineNum = 1179663;BA.debugLine="panels.Initialize";
 mostCurrent._panels.Initialize();
- //BA.debugLineNum = 103;BA.debugLine="For i = 0 To numPanels - 1";
+RDebugUtils.currentLine=1179665;
+ //BA.debugLineNum = 1179665;BA.debugLine="For i = 0 To numPanels - 1";
 {
 final int step13 = 1;
 final int limit13 = (int) (_numpanels-1);
 _i = (int) (0) ;
 for (;_i <= limit13 ;_i = _i + step13 ) {
- //BA.debugLineNum = 104;BA.debugLine="Dim panel As Panel";
+RDebugUtils.currentLine=1179666;
+ //BA.debugLineNum = 1179666;BA.debugLine="Dim panel As Panel";
 _panel = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 105;BA.debugLine="panel.Initialize(\"\")";
+RDebugUtils.currentLine=1179667;
+ //BA.debugLineNum = 1179667;BA.debugLine="panel.Initialize(\"\")";
 _panel.Initialize(mostCurrent.activityBA,"");
- //BA.debugLineNum = 106;BA.debugLine="panel.Color = Colors.ARGB(200, 255, 255, 180)";
+RDebugUtils.currentLine=1179668;
+ //BA.debugLineNum = 1179668;BA.debugLine="panel.Color = Colors.ARGB(200, 255, 255, 180)";
 _panel.setColor(anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (200),(int) (255),(int) (255),(int) (180)));
- //BA.debugLineNum = 107;BA.debugLine="container.AddView(panel, (panelWidth + spaceBetw";
+RDebugUtils.currentLine=1179669;
+ //BA.debugLineNum = 1179669;BA.debugLine="container.AddView(panel, (panelWidth + spaceBetw";
 _container.AddView((android.view.View)(_panel.getObject()),(int) ((_panelwidth+_spacebetweenpanels)*_i),(int) (0),_panelwidth,_panelheight);
- //BA.debugLineNum = 108;BA.debugLine="panels.Add(panel)";
+RDebugUtils.currentLine=1179670;
+ //BA.debugLineNum = 1179670;BA.debugLine="panels.Add(panel)";
 mostCurrent._panels.Add((Object)(_panel.getObject()));
  }
 };
- //BA.debugLineNum = 111;BA.debugLine="FillPanelsProgressively";
+RDebugUtils.currentLine=1179673;
+ //BA.debugLineNum = 1179673;BA.debugLine="FillPanelsProgressively";
 _fillpanelsprogressively();
- //BA.debugLineNum = 112;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1179674;
+ //BA.debugLineNum = 1179674;BA.debugLine="End Sub";
 return "";
 }
-public static String  _fillcurrentbarandadvance() throws Exception{
-anywheresoftware.b4a.objects.PanelWrapper _panel = null;
-anywheresoftware.b4a.objects.drawable.CanvasWrapper _canvas = null;
-anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect = null;
- //BA.debugLineNum = 178;BA.debugLine="Sub FillCurrentBarAndAdvance";
- //BA.debugLineNum = 179;BA.debugLine="changeScreen(currentPanelIndex + 1)";
-_changescreen((int) (_currentpanelindex+1));
- //BA.debugLineNum = 181;BA.debugLine="If currentPanelIndex >= panels.Size Then Return";
-if (_currentpanelindex>=mostCurrent._panels.getSize()) { 
-if (true) return "";};
- //BA.debugLineNum = 183;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
-_panel = new anywheresoftware.b4a.objects.PanelWrapper();
-_panel = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._panels.Get(_currentpanelindex)));
- //BA.debugLineNum = 184;BA.debugLine="Dim canvas As Canvas";
-_canvas = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
- //BA.debugLineNum = 185;BA.debugLine="canvas.Initialize(panel)";
-_canvas.Initialize((android.view.View)(_panel.getObject()));
- //BA.debugLineNum = 186;BA.debugLine="Dim rect As Rect";
-_rect = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
- //BA.debugLineNum = 187;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
-_rect.Initialize((int) (0),(int) (0),_panel.getWidth(),_panel.getHeight());
- //BA.debugLineNum = 188;BA.debugLine="canvas.DrawRect(rect, Colors.White, True, 0)";
-_canvas.DrawRect((android.graphics.Rect)(_rect.getObject()),anywheresoftware.b4a.keywords.Common.Colors.White,anywheresoftware.b4a.keywords.Common.True,(float) (0));
- //BA.debugLineNum = 190;BA.debugLine="currentPanelIndex = Min(currentPanelIndex + 1, pa";
-_currentpanelindex = (int) (anywheresoftware.b4a.keywords.Common.Min(_currentpanelindex+1,mostCurrent._panels.getSize()-1));
- //BA.debugLineNum = 191;BA.debugLine="progress = 0";
-_progress = (int) (0);
- //BA.debugLineNum = 192;BA.debugLine="End Sub";
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+RDebugUtils.currentModule="rewind";
+RDebugUtils.currentLine=983040;
+ //BA.debugLineNum = 983040;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=983042;
+ //BA.debugLineNum = 983042;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_resume() throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=917504;
+ //BA.debugLineNum = 917504;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=917506;
+ //BA.debugLineNum = 917506;BA.debugLine="End Sub";
+return "";
+}
+public static String  _animateslidein(anywheresoftware.b4a.objects.ConcreteViewWrapper _view) throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "animateslidein", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "animateslidein", new Object[] {_view}));}
+RDebugUtils.currentLine=1114112;
+ //BA.debugLineNum = 1114112;BA.debugLine="Sub AnimateSlideIn(view As View)";
+RDebugUtils.currentLine=1114113;
+ //BA.debugLineNum = 1114113;BA.debugLine="view.Top = Activity.Height + view.Height";
+_view.setTop((int) (mostCurrent._activity.getHeight()+_view.getHeight()));
+RDebugUtils.currentLine=1114114;
+ //BA.debugLineNum = 1114114;BA.debugLine="view.SetLayoutAnimated(800, view.Left, Activity.H";
+_view.SetLayoutAnimated((int) (800),_view.getLeft(),(int) (mostCurrent._activity.getHeight()-_view.getHeight()),_view.getWidth(),_view.getHeight());
+RDebugUtils.currentLine=1114115;
+ //BA.debugLineNum = 1114115;BA.debugLine="End Sub";
 return "";
 }
 public static String  _fillpanelsprogressively() throws Exception{
- //BA.debugLineNum = 114;BA.debugLine="Sub FillPanelsProgressively";
- //BA.debugLineNum = 115;BA.debugLine="currentPanelIndex = 0";
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "fillpanelsprogressively", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "fillpanelsprogressively", null));}
+RDebugUtils.currentLine=1245184;
+ //BA.debugLineNum = 1245184;BA.debugLine="Sub FillPanelsProgressively";
+RDebugUtils.currentLine=1245185;
+ //BA.debugLineNum = 1245185;BA.debugLine="currentPanelIndex = 0";
 _currentpanelindex = (int) (0);
- //BA.debugLineNum = 116;BA.debugLine="progress = 0";
+RDebugUtils.currentLine=1245186;
+ //BA.debugLineNum = 1245186;BA.debugLine="progress = 0";
 _progress = (int) (0);
- //BA.debugLineNum = 118;BA.debugLine="tmr.Initialize(\"FillTimer\", 500)";
-mostCurrent._tmr.Initialize(processBA,"FillTimer",(long) (500));
- //BA.debugLineNum = 119;BA.debugLine="tmr.Enabled = True";
-mostCurrent._tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 120;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1245188;
+ //BA.debugLineNum = 1245188;BA.debugLine="tmr.Initialize(\"FillTimer\", 500)";
+_tmr.Initialize(processBA,"FillTimer",(long) (500));
+RDebugUtils.currentLine=1245189;
+ //BA.debugLineNum = 1245189;BA.debugLine="tmr.Enabled = True";
+_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=1245190;
+ //BA.debugLineNum = 1245190;BA.debugLine="End Sub";
+return "";
+}
+public static String  _fillcurrentbarandadvance() throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "fillcurrentbarandadvance", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "fillcurrentbarandadvance", null));}
+anywheresoftware.b4a.objects.PanelWrapper _panel = null;
+anywheresoftware.b4a.objects.drawable.CanvasWrapper _canvas = null;
+anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect = null;
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub FillCurrentBarAndAdvance";
+RDebugUtils.currentLine=1441793;
+ //BA.debugLineNum = 1441793;BA.debugLine="changeScreen(currentPanelIndex + 1)";
+_changescreen((int) (_currentpanelindex+1));
+RDebugUtils.currentLine=1441795;
+ //BA.debugLineNum = 1441795;BA.debugLine="If currentPanelIndex >= panels.Size Then Return";
+if (_currentpanelindex>=mostCurrent._panels.getSize()) { 
+if (true) return "";};
+RDebugUtils.currentLine=1441797;
+ //BA.debugLineNum = 1441797;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
+_panel = new anywheresoftware.b4a.objects.PanelWrapper();
+_panel = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._panels.Get(_currentpanelindex)));
+RDebugUtils.currentLine=1441798;
+ //BA.debugLineNum = 1441798;BA.debugLine="Dim canvas As Canvas";
+_canvas = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
+RDebugUtils.currentLine=1441799;
+ //BA.debugLineNum = 1441799;BA.debugLine="canvas.Initialize(panel)";
+_canvas.Initialize((android.view.View)(_panel.getObject()));
+RDebugUtils.currentLine=1441800;
+ //BA.debugLineNum = 1441800;BA.debugLine="Dim rect As Rect";
+_rect = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
+RDebugUtils.currentLine=1441801;
+ //BA.debugLineNum = 1441801;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
+_rect.Initialize((int) (0),(int) (0),_panel.getWidth(),_panel.getHeight());
+RDebugUtils.currentLine=1441802;
+ //BA.debugLineNum = 1441802;BA.debugLine="canvas.DrawRect(rect, Colors.White, True, 0)";
+_canvas.DrawRect((android.graphics.Rect)(_rect.getObject()),anywheresoftware.b4a.keywords.Common.Colors.White,anywheresoftware.b4a.keywords.Common.True,(float) (0));
+RDebugUtils.currentLine=1441804;
+ //BA.debugLineNum = 1441804;BA.debugLine="currentPanelIndex = Min(currentPanelIndex + 1, pa";
+_currentpanelindex = (int) (anywheresoftware.b4a.keywords.Common.Min(_currentpanelindex+1,mostCurrent._panels.getSize()-1));
+RDebugUtils.currentLine=1441805;
+ //BA.debugLineNum = 1441805;BA.debugLine="progress = 0";
+_progress = (int) (0);
+RDebugUtils.currentLine=1441806;
+ //BA.debugLineNum = 1441806;BA.debugLine="End Sub";
 return "";
 }
 public static String  _filltimer_tick() throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "filltimer_tick", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "filltimer_tick", null));}
 anywheresoftware.b4a.objects.PanelWrapper _panel = null;
 int _panelwidth = 0;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper _canvas = null;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect = null;
- //BA.debugLineNum = 122;BA.debugLine="Sub FillTimer_Tick";
- //BA.debugLineNum = 123;BA.debugLine="If currentPanelIndex >= panels.Size Then";
+RDebugUtils.currentLine=1310720;
+ //BA.debugLineNum = 1310720;BA.debugLine="Sub FillTimer_Tick";
+RDebugUtils.currentLine=1310721;
+ //BA.debugLineNum = 1310721;BA.debugLine="If currentPanelIndex >= panels.Size Then";
 if (_currentpanelindex>=mostCurrent._panels.getSize()) { 
- //BA.debugLineNum = 124;BA.debugLine="tmr.Enabled = False";
-mostCurrent._tmr.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 125;BA.debugLine="Return";
+RDebugUtils.currentLine=1310722;
+ //BA.debugLineNum = 1310722;BA.debugLine="tmr.Enabled = False";
+_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=1310723;
+ //BA.debugLineNum = 1310723;BA.debugLine="Return";
 if (true) return "";
  };
- //BA.debugLineNum = 128;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
+RDebugUtils.currentLine=1310726;
+ //BA.debugLineNum = 1310726;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
 _panel = new anywheresoftware.b4a.objects.PanelWrapper();
 _panel = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._panels.Get(_currentpanelindex)));
- //BA.debugLineNum = 129;BA.debugLine="Dim panelWidth As Int = panel.Width";
+RDebugUtils.currentLine=1310727;
+ //BA.debugLineNum = 1310727;BA.debugLine="Dim panelWidth As Int = panel.Width";
 _panelwidth = _panel.getWidth();
- //BA.debugLineNum = 131;BA.debugLine="Dim canvas As Canvas";
+RDebugUtils.currentLine=1310729;
+ //BA.debugLineNum = 1310729;BA.debugLine="Dim canvas As Canvas";
 _canvas = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
- //BA.debugLineNum = 132;BA.debugLine="canvas.Initialize(panel)";
+RDebugUtils.currentLine=1310730;
+ //BA.debugLineNum = 1310730;BA.debugLine="canvas.Initialize(panel)";
 _canvas.Initialize((android.view.View)(_panel.getObject()));
- //BA.debugLineNum = 133;BA.debugLine="Dim rect As Rect";
+RDebugUtils.currentLine=1310731;
+ //BA.debugLineNum = 1310731;BA.debugLine="Dim rect As Rect";
 _rect = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
- //BA.debugLineNum = 134;BA.debugLine="rect.Initialize(0, 0, progress, panel.Height)";
+RDebugUtils.currentLine=1310732;
+ //BA.debugLineNum = 1310732;BA.debugLine="rect.Initialize(0, 0, progress, panel.Height)";
 _rect.Initialize((int) (0),(int) (0),_progress,_panel.getHeight());
- //BA.debugLineNum = 135;BA.debugLine="canvas.DrawRect(rect, Colors.White, True, 0)";
+RDebugUtils.currentLine=1310733;
+ //BA.debugLineNum = 1310733;BA.debugLine="canvas.DrawRect(rect, Colors.White, True, 0)";
 _canvas.DrawRect((android.graphics.Rect)(_rect.getObject()),anywheresoftware.b4a.keywords.Common.Colors.White,anywheresoftware.b4a.keywords.Common.True,(float) (0));
- //BA.debugLineNum = 137;BA.debugLine="progress = progress + 5dip";
+RDebugUtils.currentLine=1310735;
+ //BA.debugLineNum = 1310735;BA.debugLine="progress = progress + 5dip";
 _progress = (int) (_progress+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)));
- //BA.debugLineNum = 139;BA.debugLine="If progress >= panelWidth Then";
+RDebugUtils.currentLine=1310737;
+ //BA.debugLineNum = 1310737;BA.debugLine="If progress >= panelWidth Then";
 if (_progress>=_panelwidth) { 
- //BA.debugLineNum = 140;BA.debugLine="currentPanelIndex = Min(currentPanelIndex + 1, p";
+RDebugUtils.currentLine=1310738;
+ //BA.debugLineNum = 1310738;BA.debugLine="currentPanelIndex = Min(currentPanelIndex + 1, p";
 _currentpanelindex = (int) (anywheresoftware.b4a.keywords.Common.Min(_currentpanelindex+1,mostCurrent._panels.getSize()-1));
- //BA.debugLineNum = 141;BA.debugLine="changeScreen(currentPanelIndex)";
+RDebugUtils.currentLine=1310739;
+ //BA.debugLineNum = 1310739;BA.debugLine="changeScreen(currentPanelIndex)";
 _changescreen(_currentpanelindex);
- //BA.debugLineNum = 142;BA.debugLine="progress = 0";
+RDebugUtils.currentLine=1310740;
+ //BA.debugLineNum = 1310740;BA.debugLine="progress = 0";
 _progress = (int) (0);
  };
- //BA.debugLineNum = 144;BA.debugLine="End Sub";
-return "";
-}
-public static String  _fullscreenactivity(anywheresoftware.b4a.objects.ActivityWrapper _act) throws Exception{
-anywheresoftware.b4a.phone.Phone _p = null;
-int _bodyheight = 0;
-anywheresoftware.b4j.object.JavaObject _jo = null;
-anywheresoftware.b4j.object.JavaObject _window = null;
- //BA.debugLineNum = 220;BA.debugLine="Sub FullscreenActivity (act As Activity)";
- //BA.debugLineNum = 221;BA.debugLine="Dim p As Phone";
-_p = new anywheresoftware.b4a.phone.Phone();
- //BA.debugLineNum = 222;BA.debugLine="Dim bodyHeight As Int = GetStatusBarHeight + GetN";
-_bodyheight = (int) (_getstatusbarheight()+_getnavigationbarheight());
- //BA.debugLineNum = 223;BA.debugLine="If p.SdkVersion >= 4.4 Then";
-if (_p.getSdkVersion()>=4.4) { 
- //BA.debugLineNum = 224;BA.debugLine="Dim jo As JavaObject";
-_jo = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 225;BA.debugLine="Dim window As JavaObject = jo.InitializeContext.";
-_window = new anywheresoftware.b4j.object.JavaObject();
-_window = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_jo.InitializeContext(processBA).RunMethod("getWindow",(Object[])(anywheresoftware.b4a.keywords.Common.Null))));
- //BA.debugLineNum = 226;BA.debugLine="window.RunMethod(\"addFlags\", Array(Bit.Or(0x0000";
-_window.RunMethod("addFlags",new Object[]{(Object)(anywheresoftware.b4a.keywords.Common.Bit.Or(((int)0x00000200),((int)0x08000000)))});
- //BA.debugLineNum = 227;BA.debugLine="act.Height = act.Height + bodyHeight";
-_act.setHeight((int) (_act.getHeight()+_bodyheight));
- };
- //BA.debugLineNum = 229;BA.debugLine="End Sub";
-return "";
-}
-public static int  _getnavigationbarheight() throws Exception{
-anywheresoftware.b4j.object.JavaObject _context = null;
-anywheresoftware.b4j.object.JavaObject _res = null;
-int _resourceid = 0;
- //BA.debugLineNum = 243;BA.debugLine="Sub GetNavigationBarHeight As Int";
- //BA.debugLineNum = 244;BA.debugLine="Dim context As JavaObject";
-_context = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 245;BA.debugLine="context.InitializeContext";
-_context.InitializeContext(processBA);
- //BA.debugLineNum = 246;BA.debugLine="Dim res As JavaObject = context.RunMethod(\"getRes";
-_res = new anywheresoftware.b4j.object.JavaObject();
-_res = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_context.RunMethod("getResources",(Object[])(anywheresoftware.b4a.keywords.Common.Null))));
- //BA.debugLineNum = 247;BA.debugLine="Dim resourceId As Int = res.RunMethod(\"getIdentif";
-_resourceid = (int)(BA.ObjectToNumber(_res.RunMethod("getIdentifier",new Object[]{(Object)("navigation_bar_height"),(Object)("dimen"),(Object)("android")})));
- //BA.debugLineNum = 248;BA.debugLine="If resourceId > 0 Then";
-if (_resourceid>0) { 
- //BA.debugLineNum = 249;BA.debugLine="Return res.RunMethod(\"getDimensionPixelSize\", Ar";
-if (true) return (int)(BA.ObjectToNumber(_res.RunMethod("getDimensionPixelSize",new Object[]{(Object)(_resourceid)})));
- }else {
- //BA.debugLineNum = 251;BA.debugLine="Return 0";
-if (true) return (int) (0);
- };
- //BA.debugLineNum = 253;BA.debugLine="End Sub";
-return 0;
-}
-public static int  _getstatusbarheight() throws Exception{
-anywheresoftware.b4j.object.JavaObject _context = null;
-anywheresoftware.b4j.object.JavaObject _res = null;
-int _resourceid = 0;
- //BA.debugLineNum = 231;BA.debugLine="Sub GetStatusBarHeight As Int";
- //BA.debugLineNum = 232;BA.debugLine="Dim context As JavaObject";
-_context = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 233;BA.debugLine="context.InitializeContext";
-_context.InitializeContext(processBA);
- //BA.debugLineNum = 234;BA.debugLine="Dim res As JavaObject = context.RunMethod(\"getRes";
-_res = new anywheresoftware.b4j.object.JavaObject();
-_res = (anywheresoftware.b4j.object.JavaObject) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4j.object.JavaObject(), (java.lang.Object)(_context.RunMethod("getResources",(Object[])(anywheresoftware.b4a.keywords.Common.Null))));
- //BA.debugLineNum = 235;BA.debugLine="Dim resourceId As Int = res.RunMethod(\"getIdentif";
-_resourceid = (int)(BA.ObjectToNumber(_res.RunMethod("getIdentifier",new Object[]{(Object)("status_bar_height"),(Object)("dimen"),(Object)("android")})));
- //BA.debugLineNum = 236;BA.debugLine="If resourceId > 0 Then";
-if (_resourceid>0) { 
- //BA.debugLineNum = 237;BA.debugLine="Return res.RunMethod(\"getDimensionPixelSize\", Ar";
-if (true) return (int)(BA.ObjectToNumber(_res.RunMethod("getDimensionPixelSize",new Object[]{(Object)(_resourceid)})));
- }else {
- //BA.debugLineNum = 239;BA.debugLine="Return 0";
-if (true) return (int) (0);
- };
- //BA.debugLineNum = 241;BA.debugLine="End Sub";
-return 0;
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 14;BA.debugLine="Private pnlBackground As Panel";
-mostCurrent._pnlbackground = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 15;BA.debugLine="Private pnlContent As Panel";
-mostCurrent._pnlcontent = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 18;BA.debugLine="Dim currentPanelIndex As Int = 0";
-_currentpanelindex = (int) (0);
- //BA.debugLineNum = 19;BA.debugLine="Dim progress As Int";
-_progress = 0;
- //BA.debugLineNum = 20;BA.debugLine="Dim panels As List";
-mostCurrent._panels = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 21;BA.debugLine="Dim tmr As Timer";
-mostCurrent._tmr = new anywheresoftware.b4a.objects.Timer();
- //BA.debugLineNum = 22;BA.debugLine="Dim startX As Float";
-_startx = 0f;
- //BA.debugLineNum = 23;BA.debugLine="Dim originalX As Float";
-_originalx = 0f;
- //BA.debugLineNum = 25;BA.debugLine="Private slide_1 As ImageView 'IMAGEN PRINCIPAL'";
-mostCurrent._slide_1 = new anywheresoftware.b4a.objects.ImageViewWrapper();
- //BA.debugLineNum = 26;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1310742;
+ //BA.debugLineNum = 1310742;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pnlcontent_touch(int _action,float _x,float _y) throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "pnlcontent_touch", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "pnlcontent_touch", new Object[] {_action,_x,_y}));}
 float _deltax = 0f;
 int _panelwidth = 0;
- //BA.debugLineNum = 146;BA.debugLine="Sub pnlContent_Touch(Action As Int, X As Float, Y";
- //BA.debugLineNum = 147;BA.debugLine="Select Case Action";
+RDebugUtils.currentLine=1376256;
+ //BA.debugLineNum = 1376256;BA.debugLine="Sub pnlContent_Touch(Action As Int, X As Float, Y";
+RDebugUtils.currentLine=1376257;
+ //BA.debugLineNum = 1376257;BA.debugLine="Select Case Action";
 switch (BA.switchObjectToInt(_action,mostCurrent._activity.ACTION_DOWN,mostCurrent._activity.ACTION_MOVE,mostCurrent._activity.ACTION_UP)) {
 case 0: {
- //BA.debugLineNum = 149;BA.debugLine="startX = X";
+RDebugUtils.currentLine=1376259;
+ //BA.debugLineNum = 1376259;BA.debugLine="startX = X";
 _startx = _x;
- //BA.debugLineNum = 150;BA.debugLine="originalX = pnlContent.Left";
+RDebugUtils.currentLine=1376260;
+ //BA.debugLineNum = 1376260;BA.debugLine="originalX = pnlContent.Left";
 _originalx = (float) (mostCurrent._pnlcontent.getLeft());
  break; }
 case 1: {
- //BA.debugLineNum = 152;BA.debugLine="Dim deltaX As Float = X - startX";
+RDebugUtils.currentLine=1376262;
+ //BA.debugLineNum = 1376262;BA.debugLine="Dim deltaX As Float = X - startX";
 _deltax = (float) (_x-_startx);
- //BA.debugLineNum = 153;BA.debugLine="pnlContent.Left = Max(Min(originalX + deltaX, o";
+RDebugUtils.currentLine=1376263;
+ //BA.debugLineNum = 1376263;BA.debugLine="pnlContent.Left = Max(Min(originalX + deltaX, o";
 mostCurrent._pnlcontent.setLeft((int) (anywheresoftware.b4a.keywords.Common.Max(anywheresoftware.b4a.keywords.Common.Min(_originalx+_deltax,_originalx+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (100))),_originalx-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (100)))));
  break; }
 case 2: {
- //BA.debugLineNum = 155;BA.debugLine="Dim deltaX As Float = X - startX";
+RDebugUtils.currentLine=1376265;
+ //BA.debugLineNum = 1376265;BA.debugLine="Dim deltaX As Float = X - startX";
 _deltax = (float) (_x-_startx);
- //BA.debugLineNum = 157;BA.debugLine="If Abs(deltaX) > 50dip Then";
+RDebugUtils.currentLine=1376267;
+ //BA.debugLineNum = 1376267;BA.debugLine="If Abs(deltaX) > 50dip Then";
 if (anywheresoftware.b4a.keywords.Common.Abs(_deltax)>anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50))) { 
- //BA.debugLineNum = 158;BA.debugLine="If deltaX < 0 Then";
+RDebugUtils.currentLine=1376268;
+ //BA.debugLineNum = 1376268;BA.debugLine="If deltaX < 0 Then";
 if (_deltax<0) { 
- //BA.debugLineNum = 159;BA.debugLine="FillCurrentBarAndAdvance";
+RDebugUtils.currentLine=1376269;
+ //BA.debugLineNum = 1376269;BA.debugLine="FillCurrentBarAndAdvance";
 _fillcurrentbarandadvance();
- }else if(_deltax>0) { 
- //BA.debugLineNum = 161;BA.debugLine="ResetCurrentBarAndGoBack";
+ }else 
+{RDebugUtils.currentLine=1376270;
+ //BA.debugLineNum = 1376270;BA.debugLine="Else If deltaX > 0 Then";
+if (_deltax>0) { 
+RDebugUtils.currentLine=1376271;
+ //BA.debugLineNum = 1376271;BA.debugLine="ResetCurrentBarAndGoBack";
 _resetcurrentbarandgoback();
- };
+ }}
+;
  }else {
- //BA.debugLineNum = 164;BA.debugLine="Dim panelWidth As Int = pnlContent.Width / 2";
+RDebugUtils.currentLine=1376274;
+ //BA.debugLineNum = 1376274;BA.debugLine="Dim panelWidth As Int = pnlContent.Width / 2";
 _panelwidth = (int) (mostCurrent._pnlcontent.getWidth()/(double)2);
- //BA.debugLineNum = 165;BA.debugLine="If X < panelWidth Then";
+RDebugUtils.currentLine=1376275;
+ //BA.debugLineNum = 1376275;BA.debugLine="If X < panelWidth Then";
 if (_x<_panelwidth) { 
- //BA.debugLineNum = 166;BA.debugLine="ResetCurrentBarAndGoBack";
+RDebugUtils.currentLine=1376276;
+ //BA.debugLineNum = 1376276;BA.debugLine="ResetCurrentBarAndGoBack";
 _resetcurrentbarandgoback();
  }else {
- //BA.debugLineNum = 168;BA.debugLine="FillCurrentBarAndAdvance";
+RDebugUtils.currentLine=1376278;
+ //BA.debugLineNum = 1376278;BA.debugLine="FillCurrentBarAndAdvance";
 _fillcurrentbarandadvance();
  };
  };
- //BA.debugLineNum = 173;BA.debugLine="pnlContent.SetLayoutAnimated(300, originalX, pn";
+RDebugUtils.currentLine=1376283;
+ //BA.debugLineNum = 1376283;BA.debugLine="pnlContent.SetLayoutAnimated(300, originalX, pn";
 mostCurrent._pnlcontent.SetLayoutAnimated((int) (300),(int) (_originalx),mostCurrent._pnlcontent.getTop(),mostCurrent._pnlcontent.getWidth(),mostCurrent._pnlcontent.getHeight());
  break; }
 }
 ;
- //BA.debugLineNum = 175;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 7;BA.debugLine="Private xui As XUI";
-_xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
- //BA.debugLineNum = 8;BA.debugLine="Private access As Accessiblity";
-_access = new anywheresoftware.b4a.objects.Accessibility.Accessibility2();
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1376285;
+ //BA.debugLineNum = 1376285;BA.debugLine="End Sub";
 return "";
 }
 public static String  _resetcurrentbarandgoback() throws Exception{
+RDebugUtils.currentModule="rewind";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "resetcurrentbarandgoback", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "resetcurrentbarandgoback", null));}
 anywheresoftware.b4a.objects.PanelWrapper _panel = null;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper _canvas = null;
 anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect = null;
- //BA.debugLineNum = 194;BA.debugLine="Sub ResetCurrentBarAndGoBack";
- //BA.debugLineNum = 195;BA.debugLine="changeScreen(currentPanelIndex - 1)";
+RDebugUtils.currentLine=1507328;
+ //BA.debugLineNum = 1507328;BA.debugLine="Sub ResetCurrentBarAndGoBack";
+RDebugUtils.currentLine=1507329;
+ //BA.debugLineNum = 1507329;BA.debugLine="changeScreen(currentPanelIndex - 1)";
 _changescreen((int) (_currentpanelindex-1));
- //BA.debugLineNum = 197;BA.debugLine="If currentPanelIndex <= 0 Then Return";
+RDebugUtils.currentLine=1507331;
+ //BA.debugLineNum = 1507331;BA.debugLine="If currentPanelIndex <= 0 Then Return";
 if (_currentpanelindex<=0) { 
 if (true) return "";};
- //BA.debugLineNum = 199;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
+RDebugUtils.currentLine=1507333;
+ //BA.debugLineNum = 1507333;BA.debugLine="Dim panel As Panel = panels.Get(currentPanelIndex";
 _panel = new anywheresoftware.b4a.objects.PanelWrapper();
 _panel = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._panels.Get(_currentpanelindex)));
- //BA.debugLineNum = 200;BA.debugLine="Dim canvas As Canvas";
+RDebugUtils.currentLine=1507334;
+ //BA.debugLineNum = 1507334;BA.debugLine="Dim canvas As Canvas";
 _canvas = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
- //BA.debugLineNum = 201;BA.debugLine="canvas.Initialize(panel)";
+RDebugUtils.currentLine=1507335;
+ //BA.debugLineNum = 1507335;BA.debugLine="canvas.Initialize(panel)";
 _canvas.Initialize((android.view.View)(_panel.getObject()));
- //BA.debugLineNum = 202;BA.debugLine="Dim rect As Rect";
+RDebugUtils.currentLine=1507336;
+ //BA.debugLineNum = 1507336;BA.debugLine="Dim rect As Rect";
 _rect = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
- //BA.debugLineNum = 203;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
+RDebugUtils.currentLine=1507337;
+ //BA.debugLineNum = 1507337;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
 _rect.Initialize((int) (0),(int) (0),_panel.getWidth(),_panel.getHeight());
- //BA.debugLineNum = 204;BA.debugLine="canvas.DrawRect(rect, Colors.ARGB(200, 255, 255,";
+RDebugUtils.currentLine=1507338;
+ //BA.debugLineNum = 1507338;BA.debugLine="canvas.DrawRect(rect, Colors.ARGB(200, 255, 255,";
 _canvas.DrawRect((android.graphics.Rect)(_rect.getObject()),anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (200),(int) (255),(int) (255),(int) (180)),anywheresoftware.b4a.keywords.Common.True,(float) (0));
- //BA.debugLineNum = 206;BA.debugLine="currentPanelIndex = Max(currentPanelIndex - 1, 0)";
+RDebugUtils.currentLine=1507340;
+ //BA.debugLineNum = 1507340;BA.debugLine="currentPanelIndex = Max(currentPanelIndex - 1, 0)";
 _currentpanelindex = (int) (anywheresoftware.b4a.keywords.Common.Max(_currentpanelindex-1,0));
- //BA.debugLineNum = 208;BA.debugLine="panel = panels.Get(currentPanelIndex)";
+RDebugUtils.currentLine=1507342;
+ //BA.debugLineNum = 1507342;BA.debugLine="panel = panels.Get(currentPanelIndex)";
 _panel = (anywheresoftware.b4a.objects.PanelWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.PanelWrapper(), (android.view.ViewGroup)(mostCurrent._panels.Get(_currentpanelindex)));
- //BA.debugLineNum = 209;BA.debugLine="canvas.Initialize(panel)";
+RDebugUtils.currentLine=1507343;
+ //BA.debugLineNum = 1507343;BA.debugLine="canvas.Initialize(panel)";
 _canvas.Initialize((android.view.View)(_panel.getObject()));
- //BA.debugLineNum = 210;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
+RDebugUtils.currentLine=1507344;
+ //BA.debugLineNum = 1507344;BA.debugLine="rect.Initialize(0, 0, panel.Width, panel.Height)";
 _rect.Initialize((int) (0),(int) (0),_panel.getWidth(),_panel.getHeight());
- //BA.debugLineNum = 211;BA.debugLine="canvas.DrawRect(rect, Colors.ARGB(200, 255, 255,";
+RDebugUtils.currentLine=1507345;
+ //BA.debugLineNum = 1507345;BA.debugLine="canvas.DrawRect(rect, Colors.ARGB(200, 255, 255,";
 _canvas.DrawRect((android.graphics.Rect)(_rect.getObject()),anywheresoftware.b4a.keywords.Common.Colors.ARGB((int) (200),(int) (255),(int) (255),(int) (180)),anywheresoftware.b4a.keywords.Common.True,(float) (0));
- //BA.debugLineNum = 213;BA.debugLine="progress = 0";
+RDebugUtils.currentLine=1507347;
+ //BA.debugLineNum = 1507347;BA.debugLine="progress = 0";
 _progress = (int) (0);
- //BA.debugLineNum = 214;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1507348;
+ //BA.debugLineNum = 1507348;BA.debugLine="End Sub";
 return "";
 }
 }
